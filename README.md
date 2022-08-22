@@ -3,6 +3,8 @@
 
 This repo shows a bug when using WMF in a project with Web Workers. The project was configured with minimum chunk size of 0 to make the code simpler.
 
+Since webpack 5, Workers were simplified by just using `new Worker(new URL('./worker.js', import.meta.url)))`. This generates a separate worker chunk with it's own runtime (even if using `runtimeChunk: "single"`). This worker runtime is unable to use Module Federation (at the moment, at least) and therefore sharing modules through module federation make it impossible to use the shared modules on the worker.
+
 ## Setup and running
 
 ```bash
