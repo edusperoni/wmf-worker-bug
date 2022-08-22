@@ -25,7 +25,8 @@ module.exports = (env) => {
         config.plugins.push(new webpack.container.ModuleFederationPlugin({
             name: "mainApp",
             shared: {
-                'is-odd': { eager: true, singleton: true, version: '3.0.1', requiredVersion: '*' }
+                'is-odd': { eager: true, singleton: true, version: '3.0.1', requiredVersion: '*' },
+                'is-number': { eager: true, singleton: true, version: '3.0.1', requiredVersion: '*' }
             },
             remoteType: "node-commonjs"
         }));
