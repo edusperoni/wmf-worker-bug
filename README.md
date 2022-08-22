@@ -3,6 +3,24 @@
 
 This repo shows a bug when using WMF in a project with Web Workers. The project was configured with minimum chunk size of 0 to make the code simpler.
 
+## Setup and running
+
+```bash
+#setup
+npm i
+
+# normal build
+npm run build
+npm start # run the generated dist/main.js
+
+# wmf build
+npm run build.wmf
+npm start # run the generated dist/main.js
+# notice a promise rejection due to the worker erroring out
+```
+
+## Explanation
+
 When generating a project without Webpack Module Federation, the generated worker is simple:
 
 
