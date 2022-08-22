@@ -1,5 +1,7 @@
 import { Worker } from 'worker_threads';
 
+// this is needed so that webpack picks up the package as something that should be shared
+import 'is-odd';
 
 function checkIfOdd(n, worker) {
     return new Promise((resolve, reject) => {
