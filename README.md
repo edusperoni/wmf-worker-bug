@@ -141,7 +141,9 @@ Webpack sharing information in `src_worker_js.js` runtime:
 /******/ 			return initPromises[name] = Promise.all(promises).then(() => (initPromises[name] = 1));
 ```
 
-Considering we're dealing with workers, I suspect that WMF should be completely disabled on the worker context.
+~~Considering we're dealing with workers, I suspect that WMF should be completely disabled on the worker context.~~
+
+Taking another look at it. It's possible that the worker will try to read code from a shared chunk, which in turn will contain references to the shared modules. So the best solution might be to replicate the sharing contexts on the worker (maybe only the eager ones), so they can still be used in a limited way.
 
 
 
